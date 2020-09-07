@@ -2,6 +2,7 @@
 define noah = Character("Noah")
 define mitsue = Character("Mitsue")
 define aki = Character("Aki")
+define all = Character("All")
 
 # Mitsue
 image mitsueSmile = "mitsueSmile.png"
@@ -33,8 +34,61 @@ image noahSurprised = "noahSurprised.png"
 image noahTalk = "noahTalk.png"
 image noahWorriedSmile = "noahWorriedSmile.png"
 image noahWorriedTalk = "noahWorriedTalk.png"
-image noahWorriedTalk2 = "noahWorriedTalk2.png"
+image noahWorriedTalk2 = "noahWorriedTalk2.png" 
 
+# Races
+$ human = False
+$ elf = False
+$ dwarf = False
+$ goblin = False
+$ dragonborn = False
+$ tabaxi = False
+$ raceString = ""
+
+# Classes.
+$ barbarian = False
+$ fighter = False
+$ monk = False
+$ ranger = False
+$ paladin = False
+$ bard = False
+$ classString = ""
+
+label dndExplain:
+    show mitsueTalkUpL
+    mitsue "So! Dnd stands for Dungeon and Drangons,"
+    mitsue "which is an open-ended role-playing game."
+    mitsue "That means anything is possible within the game’s rules."
+    hide mitsueTalkUpL
+    show mitsueWinkSmile
+    mitsue "For that, though, everybody will have to create their own character."
+    hide mitsueWinkSmile
+    show mitsueSmile
+    mitsue "It’s quite simple, and Aki and I will help you with the difficult parts, such as abilities, spells etc, etc."
+    hide mitsueSmile
+    show mitsueTalkUpL
+    mitsue "Aki will guide us through the story,"
+    hide mitsueTalkUpL
+    show mitsueSmile
+    mitsue "because there’s also a story,"
+    hide mitsueSmile
+    show mitsueTalkUpL
+    mitsue "so she’ll be our DM, as I said before."
+    hide mitsueTalkUpL
+    show mitsueSmile
+    mitsue "Oh, that stands for Dungeon Master."
+    mitsue "Was there anything else?"
+    hide mitsueSmile
+    show mitsueWorriedTalk
+    y "I think I got it!"
+    mitsue "Awesome-possum!"
+    hide mitsueWorriedTalk
+    menu:
+        mitsue "But are you sure I shouldn’t explain again?"
+        "Actually, tell me again.":
+            jump dndExplain
+        "No, I’m fine!":
+            jump endExplain
 
 label start:
     scene blackk
@@ -43,7 +97,6 @@ label start:
     "{i}Well… it had to get to this in the end, huh?{/i}"
     "{i}And to think I could have had a serene high school life, but…{/i}"
     # Stop the music.
-    pause
 
     scene playersroom with fade 
     # Insert happy music here.
@@ -52,6 +105,8 @@ label start:
     "But you have to do stuff at a club!"
     "{i}I just want some peace and quiet…{/i}"
     $ y = renpy.input("I'll just fill in my name.")
+    while y == "":
+        $ y = renpy.input("I'll just fill in my name.")
     "..."
     y "Whatever, I’ll decide tomorrow. I’m too tired for this!"
     y "It’s not like the world will end by then."
@@ -117,20 +172,17 @@ label start:
     y "...!"
     y "Hey, Michael."
     show michaelNormal with fade
-    michael "Morning"
+    michael "Morning!"
     hide michaelNormal
-    show michaelSmile1
-    pause 
-    hide michaelSmile1
     show michaelQuiestioningSideL
-    michael "You look gloomier than usual."
+    michael "You look gloomier than usual..."
     hide michaelQuiestioningSideL
     show michaelQuiestioningTalkFronL
-    y "Oh, you know."
+    y "Oh, you know..."
     hide michaelQuiestioningTalkFronL
     show michaelNormal
     y "I bumped into Mitsue on the way here."
-    michael "Figured" 
+    michael "Figured..." 
     hide michaelNormal
     show michaelSmile1
     michael "Heard she has a club, I’ll go later to see what’s up."
@@ -178,41 +230,165 @@ label start:
     y "Ugh..."
     "{i}What a long day… and there’s still more.{/i}"
     y "I just wanna go sleep."
+    show michaelSmile1
     michael "No time for sleep, come on."
     michael "It's gonna be fun."
-    show michaelSmile1
     y "If you say so"
     y "Let’s just go before I change my mind."
     michael "Sure."
+    hide michaelSmile1
     
     scene classroomday with fade
-    michael "I think it's here"
-    hide michaelSmile1
     show michaelQuiestioningSideL
+    michael "I think it's here"
     hide michaelQuiestioningSideL
-    mitsue "You guys actually came!"
     show mitsueSurprisedTalk
+    mitsue "You guys actually came!"
     mitsue "Now we just have to wait a little."
     hide mitsueSurprisedTalk
     show mitsueWinkSmile
-    mitsue "“I managed to convince a third person to check our club out hehehe..."
+    mitsue "I managed to convince a third person to check our club out hehehe..."
     hide mitsueWinkSmile
-    show mitsueClosedSmile
-    y "Who fell for this?"
-    hide mitsueClosedSmile
     show mitsueSmile 
     y "Who fell for this?"
     hide mitsueSmile
-    show noahWorriedTalk at center
-    show mitsueSmile at left
-    noah "Sorry if I'm late."
+    show noahWorriedTalk
+    noah "Sorry If I'm late..."
+    noah "Have I missed anything?"
     hide noahWorriedTalk
-    show noahWorriedTalk2 at center
-    noah "Did I miss anything?" 
-    show michaelTalkSideL at right
-    michael "I guess this guy did."
+    show noahWorriedTalk2
+    mitsue "I guess this guy did."
+    hide noahWorriedTalk2
+    show mitsueTalkUpL
+    mitsue "You're just in time! Come in, take a seat."
+    hide mitsueTalkUpL
+    show akiNormal
+    mitsue "Alright so, you guys know Aki. She's gonna be our DM."
+    hide akiNormal
+
+    # Choices time.
+    menu:
+        mitsue "Do you want me to explain how DnD works?"
+        "Sure, that would help.":
+            jump dndExplain
+        "Nah, we got it.":
+            label endExplain:
+                "..."
+    mitsue "Awesome-possum! Then let's get started with your characters..."
+
+    # Choose a race.
+    menu:
+        "Choose your race!:"
+        "Human":
+            $human      = True
+            $raceString = "human"
+        "Elf":
+            $elf        = True
+            $raceString = "elf"
+        "Dwarf":
+            $dwarf      = True
+            $raceString = "dwarf"
+        "Goblin":
+            $goblin     = True
+            $raceString = "goblin"
+        "Dragonborn":
+            $dragonborn = True
+            $raceString = "dragonborn"
+        "Tabaxi":
+            $tabaxi     = True
+            $raceString = "tabaxi"
+    
+    
+    # Choose a class.
+    menu:
+        "Now choose a class!:"
+        "Barbarian":
+            $barbarian   = True
+            $classString = "barbarian" 
+        "Fighter":
+            $fighter     = True
+            $classString = "fighter"
+        "Monk":
+            $monk        = True
+            $classString = "monk"
+        "Ranger":
+            $ranger      = True
+            $classString = "ranger"
+        "Paladin":
+            $paladin     = True
+            $classString = "paladin"
+        "Bard":
+            $bard        = True
+            $classString = "bard"
+    "..."
+    "{i}This was harder than she said. So complicated!{/i}"
+    show akiTalk
+    aki "Everybody done?"
+    aki "..."
+    aki "Nice!"
+    aki "You’re all having a fine beverage at a tavern, where fate had pulled you all together."
+    aki "Please present yourselves!"
+    "..."
+    y "Uhm, how?"
+    hide akiTalk
+    show mitsueTalkUpL
+    mitsue "I guess I'll go first!"
+    mitsue "So, uhm, I go by the name of Ara."
+    mitsue "I’m a little moon elf that went down with the rogue life."
+    mitsue "Wait, I have a drawing of how my character looks..."
+    "Shitty drawing...(TODOO)"
+    hide mitsueTalkUpL
+    show mitsueClosedSmile
+    mitsue "I promise not to steal your gold!"
+    hide mitsueClosedSmile
+    show akiTalk
+    aki "Adorable. Anybody else? Noah?"
+    hide akiTalk
+    show noahTalk
+    noah "Uh, sure."
+    noah "Valmin here, the halfling bard."
+    noah "I travelled up and down, earning my money through performances!"
+    noah "I have this big coat with feathers and my trusty lute,"
+    noah "which is just an old medieval guitar haha."
+    hide noahTalk
+    show noahSmile
+    "Everybody laugh"
+    "{i}Heh{/i}"
+    hide noahSmile
+    show akiTalk
+    aki "Ok, Michael?"
+    hide akiTalk
+    show michaelTalkSideL
+    michael "Oh, well."
+    michael "I’m Melchior and I’m a wizard…"
+    "..."
+    y "That's all?"
+    hide michaelTalkSideL
+    show michaelQuiestioningTalkFronL
+    michael "Well, you know the drill: pointy hat, cape, a wand or something, but it’s in nicer colors."
+    michael "Look, my only objective is to find this rare sapphire, ok?"
+    hide michaelQuiestioningTalkFronL
+    show akiTalk
+    aki "Interesting. [y]?"
+    y "Ugh..."
+    "{i}Let's just get this over with...{/i}"
+    hide akiTalk
+    show akiSmile
+    y "Hello, I am a [raceString] [classString]..."
+    hide akiSmile
+    show akiTalk
+    aki "And your name?"
+    y "Just [y]. I like my name."
+    aki "Alright, then let the adventure...BEGIN!"
+    hide akiTalk
+
+    # Exit scene.
+    scene blackk with fade
+    scene white with fade
+    all "W-what?!"
     pause
 return 
+
 
 
 
