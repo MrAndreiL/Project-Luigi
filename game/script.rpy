@@ -3,8 +3,12 @@ define noah = Character("Noah")
 define mitsue = Character("Mitsue")
 define aki = Character("Aki")
 define all = Character("All")
+define orc = Character("Orc")
+define none = Character("???")
 
-# Mitsue
+# --------------- Mitsue ---------------
+
+# Normal world.
 image mitsueSmile = "mitsueSmile.png"
 image mitsueSmileUpL = "mitsueSmileUpL.png"
 image mitsueClosedSmile = "mitsueClosedSmile.png"
@@ -13,7 +17,17 @@ image mitsueWinkSmile = "mitsueWinkSmile.png"
 image mitsueWorriedTalk = "mitsueWorriedTalk.png"
 image mitsueTalkUpL = "mitsueTalkUpL.png"
 
-# Michael
+# Dnd world.
+image mitsuedndWinkTalk = "mitsuedndWinkTalk.png"
+image mitsuedndWorriedTalk = "mitsuedndWorriedTalk.png"
+image mitsuedndWorriedSmile = "mitsuedndWorriedSmile.png"
+image mitsuedndWinkSmile = "mitsuedndWinkSmile.png"
+image mitsuedndSmile = "mitsuedndSmile.png"
+image mitsuedndTalkUpL = "mitsuedndTalkUpL.png"
+
+# --------------- Michael ---------------
+
+# Normal world.
 image michaelNormal = "michaelNormal.png"
 image michaelQuiestioningSideL = "michaelQuiestioningSideL.png"
 image michaelQuiestioningTalkFronL = "michaelQuiestioningTalkFronL.png"
@@ -22,12 +36,23 @@ image michaelSurprised = "michaelSurprised.png"
 image michaelTalkSideL = "michaelTalkSideL.png"
 image michaelWorriedSideL = "michaelWorriedSideL.png"
 
+# Dnd world.
+image michaeldndQuiestioningSideL = "michaeldndQuiestioningSideL.png"
+image michaeldndWorriedSideL = "michaeldndWorriedSideL.png"
+image michaeldndAnnoyed = "michaeldndAnnoyed.png"
+image michaeldndSmile1 = "michaeldndSmile1.png"
+image michaeldndSadSideL = "michaeldndSadSideL.png"
+image michaeldndNormal = "michaeldndNormal.png"
+
+
 # Aki
 image akiNormal = "akiNormal.png"
 image akiSmile = "akiSmile.png"
 image akiTalk = "akiTalk.png"
 
-# Noah
+# --------------- Noah ---------------
+
+# Normal world.
 image noahConfidentTalk = "noahConfidentTalk.png"
 image noahSmile = "noahSmile.png"
 image noahSurprised = "noahSurprised.png"
@@ -36,22 +61,18 @@ image noahWorriedSmile = "noahWorriedSmile.png"
 image noahWorriedTalk = "noahWorriedTalk.png"
 image noahWorriedTalk2 = "noahWorriedTalk2.png" 
 
-# Races
-$ human = False
-$ elf = False
-$ dwarf = False
-$ goblin = False
-$ dragonborn = False
-$ tabaxi = False
-$ raceString = ""
+# Dnd World.
+image noahdndTalk = "noahdndTalk.png"
+image noahdndWorriedTalk2 = "noahdndWorriedTalk2.png"
+image noahdndWorriedTalk = "noahdndWorriedTalk.png"
+image noahdndSurprised = "noahdndSurprised.png"
+image noahdndSmile = "noahdndSmile.png"
+image noahdndConfident = "noahdndConfident.png"
 
-# Classes.
-$ barbarian = False
-$ fighter = False
-$ monk = False
-$ ranger = False
-$ paladin = False
-$ bard = False
+# Other.
+image shittydrawing = "shittydrawing.png"
+
+$ raceString = ""
 $ classString = ""
 
 label dndExplain:
@@ -101,61 +122,61 @@ label start:
     scene playersroom with fade 
     # Insert happy music here.
     "{i}…I have to apply for a club!{/i}"
-    "..."
-    "But you have to do stuff at a club!"
+    "{i}...{/i}"
+    "{i}But you have to do stuff at a club!{/i}"
     "{i}I just want some peace and quiet…{/i}"
-    $ y = renpy.input("I'll just fill in my name.")
+    $ y = renpy.input("{i}I'll just fill in my name.{/i}")
     while y == "":
-        $ y = renpy.input("I'll just fill in my name.")
+        $ y = renpy.input("{i}I'll just fill in my name.{/i}")
     "..."
-    y "Whatever, I’ll decide tomorrow. I’m too tired for this!"
-    y "It’s not like the world will end by then."
+    y "{i}Whatever, I’ll decide tomorrow. I’m too tired for this!{/i}"
+    y "{i}It’s not like the world will end by then.{/i}"
     y "{i}Wouldn’t be that bad if it did though.{/i}"
     # Stop music.
 
     scene outsideschool with fade
-    y "Ugh..."
+    y "{i}Ugh...{/i}"
     mitsue "Why the long face so early in the morning?"
-    "!.."
+    "..!"
     show mitsueSmile with fade
-    y "Ah, mornin!"
+    y "Ah, mornin'!"
     hide mitsueSmile
     show mitsueSmileUpL
-    "And there she is! Our school’s Morning Glory… spreading joy or something."
-    "Mitsue’s a little too much for me at times and- oh, ok, walk with me, sure."
-    "There it goes, my peaceful morning."
-    "Actually, wait. This bubbly blue-head should know some oke-ish clubs."
-    "..."
-    y "Hey..."
+    "{i}And there she is! Our school’s Morning Glory… spreading joy or something.{/i}"
+    "{i}Mitsue’s a little too much for me at times and- oh, ok, walk with me, sure.{/i}"
+    "{i}There it goes, my peaceful morning.{/i}"
+    "{i}Actually, wait. This bubbly blue-head should know some oke-ish clubs.{/i}"
+    "{i}...{/i}"
     hide mitsueSmileUpL
     show mitsueSmile
+    y "Hey..."
     y "Have you signed up for any clubs?"
-    mitsue "Of course!"
     hide mitsueSmile
     show mitsueClosedSmile
-    mitsue "I’m in the art club, although I just ignore the tasks they give me"
+    mitsue "Of course!"
     hide mitsueClosedSmile
     show mitsueWinkSmile
+    mitsue "I’m in the art club, although I just ignore the tasks they give me."
     y "Oh, ok-"
-    mitsue "There’s also the DnD club."
     hide mitsueWinkSmile
     show mitsueSmileUpL
-    mitsue "Aki and I came up with it, but we need more members…"
+    mitsue "There’s also the DnD club."
     hide mitsueSmileUpL
     show mitsueWorriedTalk
-    "No wait, don’t ask me…"
-    mitsue "Why don't you join our club?"
+    mitsue "Aki and I came up with it, but we need more members…"
+    "{i}No wait, don’t ask me…{/i}"
     hide mitsueWorriedTalk
     show mitsueWinkSmile
+    mitsue "Why don't you join our club?"
     "{i}I wasn’t thinking about a you-directed club but ok--{/i}"
     y "Sure... I'll drop by later"
-    mitsue "Awesome-possum! We meet up after school."
     hide mitsueWinkSmile
     show mitsueClosedSmile
+    mitsue "Awesome-possum! We meet up after school."
     y "Ok, well… I gotta go that way. See you later."
-    mitsue "Bye-bye!"
     hide mitsueClosedSmile
     show mitsueWinkSmile
+    mitsue "Bye-bye!"
     hide mitsueWinkSmile
 
     # Hallway
@@ -280,22 +301,16 @@ label start:
     menu:
         "Choose your race!:"
         "Human":
-            $human      = True
             $raceString = "human"
         "Elf":
-            $elf        = True
             $raceString = "elf"
         "Dwarf":
-            $dwarf      = True
             $raceString = "dwarf"
         "Goblin":
-            $goblin     = True
             $raceString = "goblin"
         "Dragonborn":
-            $dragonborn = True
             $raceString = "dragonborn"
         "Tabaxi":
-            $tabaxi     = True
             $raceString = "tabaxi"
     
     
@@ -303,22 +318,16 @@ label start:
     menu:
         "Now choose a class!:"
         "Barbarian":
-            $barbarian   = True
             $classString = "barbarian" 
         "Fighter":
-            $fighter     = True
             $classString = "fighter"
         "Monk":
-            $monk        = True
             $classString = "monk"
         "Ranger":
-            $ranger      = True
             $classString = "ranger"
         "Paladin":
-            $paladin     = True
             $classString = "paladin"
         "Bard":
-            $bard        = True
             $classString = "bard"
     "..."
     "{i}This was harder than she said. So complicated!{/i}"
@@ -336,8 +345,10 @@ label start:
     mitsue "So, uhm, I go by the name of Ara."
     mitsue "I’m a little moon elf that went down with the rogue life."
     mitsue "Wait, I have a drawing of how my character looks..."
-    "Shitty drawing...(TODOO)"
     hide mitsueTalkUpL
+    show shittydrawing
+    pause
+    hide shittydrawing
     show mitsueClosedSmile
     mitsue "I promise not to steal your gold!"
     hide mitsueClosedSmile
@@ -386,6 +397,184 @@ label start:
     scene blackk with fade
     scene white with fade
     all "W-what?!"
+
+    # Chapter 1 - Tavern
+    scene tavern with fade
+    y "Excuse me, but what the HECK?!"
+    y "You guys can see that, right?"
+    y "I'm not hallucinating, am I?"
+    show michaeldndQuiestioningSideL
+    michael "I'm not sure we're somewhere else..."
+    y "Uh...Mitsue? Any explanation would help right now."
+    hide michaeldndQuiestioningSideL
+    show mitsuedndWorriedTalk
+    mitsue "I might have forgotten to mention the teleportation part..."
+    hide mitsuedndWorriedTalk
+    show mitsuedndWinkSmile
+    mitsue "Oopsies!"
+    hide mitsuedndWinkSmile
+    show noahdndWorriedTalk
+    noah "That was kind of a dick move, but..."
+    hide noahdndWorriedTalk
+    show noahdndTalk
+    noah "I like this outfit, not gonna lie."
+    y "Wait...where's Aki?"
+    hide noahdndTalk
+    show mitsuedndWorriedSmile
+    mitsue "Ok, don't freak out, but..."
+    mitsue "she'll appear as a voice inside out heads hahaa..."
+    y "Ok, fine. So let me get this straight: We're in this fantasy world where we look just like the characters we created earlier, right?"
+    hide mitsuedndWorriedSmile
+    show mitsuedndSmile 
+    mitsue "That's right!"
+    y "And we'll...get home today...right?"
+    mitsue "Obviously. We just have to solve a quest. The time in our world is much slower than the time here anyways."
+    hide mitsuedndSmile
+    show mitsuedndWorriedSmile
+    mitsue "Just try to calm down. If your character dies, you return to your original world."
+    hide mitsuedndWorriedSmile
+    show mitsuedndWinkTalk
+    mitsue "Now come on, we have a story to fulfill."
+    hide mitsuedndWinkTalk
+    aki "Ahem, if you're done freaking out..."
+    show michaeldndWorriedSideL
+    michael "No wait. I just feel stupid. I should have got a cooler attire."
+
+    menu:
+        "You look fine. [+5]":
+            show michaeldndSmile1
+            michael "I guess I can make it work."
+            hide michaeldndSmile1
+        "Does it really matter? [+1]":
+            show michaeldndAnnoyed
+            michael "Not that much, apparently..."
+            y "..."
+            hide michaeldndAnnoyed
+        "You look good in everything! [+3]":
+            show michaeldndSadSideL
+            michael "Yeah, everything but this."
+            hide michaeldndSadSideL
+    show mitsuedndSmile
+    mitsue "Anyways! We should look for a simple quest."
+    hide mitsuedndSmile
+    y "How about that guy?"
+    y "{i}I point at a half-ord{/i}"
+    y "He looks like he's got a quest."
+    show mitsuedndWinkTalk
+    mitsue "You're right! We should go talk to him."
+    hide mitsuedndWinkTalk
+    show noahdndSurprised
+    noah "Wait, I'll try"
+    hide noahdndSurprised
+    show mitsuedndWinkSmile
+    mitsue "Oho! We love an enthusiastic player!"
+    hide mitsuedndWinkSmile
+
+    menu: 
+        "Ha! Nerd. [+0]":
+            show noahdndWorriedTalk 
+            noah "Yeah, well. We're stuck here, might as well have some fun"
+            y "..."
+            hide noahdndWorriedTalk
+        "Never took you for this kind of stuff [+2]":
+            show noahWorriedTalk2 
+            noah "Well, we should have fun while we're here."
+            noah "DnD is supposed to be fun. Our advenutre just has better visuals."
+            y "I guess that's true..."
+            hide noahWorriedTalk2
+
+    y "{i}Ok, let's do this. Get them, boy!{/i}"
+    show noahdndTalk
+    noah "Ahem...excuse me, good sir."
+    hide noahdndTalk
+    show noahdndSmile
+    noah "I was wondering if you would be in need of help."
+    hide noahdndSmile
+    orc "Hmm...I might have something for you."
+    orc "You see...far in the forest lives a dear persone of mine."
+    orc "You wouldn't mind giving her these flowers for me, would you?"
+    orc "I won't be able to get there soon enough."
+    show mitsuedndWinkTalk
+    mitsue "We can do that!"
+    hide mitsuedndWinkTalk
+    show mitsuedndSmile
+    mitsue "Where exactly in the forest?"
+    hide mitsuedndSmile
+    orc "Just follow the long path and take the first left. She doesn't live far from there."
+    orc "Here. Make sure you give these before the sun sets."
+    orc "Find me tomorrow for payment."
+    show noahdndConfident
+    noah "We won't disappoint you, sir."
+    hide noahdndConfident
+    show mitsuedndSmile
+    mitsue "Ok, guys. Let's go."
+    hide mitsuedndSmile
+
+    # Forest.
+    scene forest with fade
+    y "How do we know this is not a scam?"
+    show mitsuedndTalkUpL
+    hide mitsuedndTalkUpL
+    show mitsuedndWorriedSmile
+    mitsue "I guess Aki's taking care of it?"
+    mitsue "She's like a God in this world, although there are things she can't do."
+    mitsue "I mean, she knows the story and we'll progress some way or another,"
+    mitsue "but this is your first time here, so we're taking it easy."
+    y "Ok, that makes sense."
+    "..."
+    hide mitsuedndWorriedSmile
+    show mitsuedndWorriedTalk
+    mitsue "Look. I know this is a lot to take in. We didn't really mean to trick you guys to come here, but..."
+    hide mitsuedndWorriedTalk
+    show mitsuedndWorriedSmile
+    mitsue "I doubt you would have believed me if I told you we were gonna transcend time and space to get to a magical place."
+    mitsue "I mean, come on."
+    y "No, no, you're right. I would have thought you really lost it if you pulled that one on me."
+    hide mitsuedndWorriedSmile
+    show noahdndTalk
+    noah "I like it!"
+    hide noahdndTalk
+    show mitsuedndWinkTalk
+    mitsue "Haha, really?"
+    hide mitsuedndWinkTalk
+    show noahdndSmile
+    noah "Yeah, I thought we were just going to play a table game, but this is on another level."
+    hide noahdndSmile
+    show michaeldndSmile1
+    michael "Yeah. I mean, except for this outfit, this is really cool."
+    hide michaeldndSmile1
+    show michaeldndQuiestioningSideL
+    michael "That, or we got high without realizing it."
+    hide michaeldndQuiestioningSideL
+    show michaeldndWorriedSideL
+    michael "Uh, sorry to interrupt, but the path branches here."
+    hide michaeldndWorriedSideL
+
+    # Forest 2.
+    scene forest2 with fade
+    menu: 
+        "Go left [main story]":
+            show mitsuedndSmile
+            mitsue "He said her house is not far from here, right?"
+            hide mitsuedndSmile
+            show mitsuedndWorriedTalk
+            mitsue "What time is it?"
+            hide mitsuedndWorriedTalk
+            show mitsuedndSmile
+            y "I feel like time's pretty relative here, but we should hurry a litte."
+            hide mitsuedndSmile
+            none "Not so fast, travelers!!"
+            y "Huh!?"
+        "Go right":
+            show michaeldndNormal 
+            michael "We've been waling for a while."
+            hide michaeldndNormal
+            show michaelWorriedSideL
+            michael "Are you sure he didn't say to go left?"
+            hide michaelWorriedSideL
+            show mitsuedndWorriedTalk
+            mitsue "Now that you mention it...maybe we should go back."
+            hide mitsuedndWorriedTalk
     pause
 return 
 
